@@ -3,7 +3,7 @@
 1 вариант: по модулям
 1. Скачать и установить https://www.postgresql.org/download/
 2. Терминал 1: cd planit-scala && sbt run
-3. Терминал 2: cd planit-frontend && npm install && ng serve
+3. Терминал 2: cd planit-frontend && npm install && npm run start
 
 2 вариант: docker 
 1. planit-scala/src/main/resources/application.conf  Раскомментировать строки 27, 30. Закомментировать 28, 31.  
