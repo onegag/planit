@@ -18,7 +18,6 @@ libraryDependencies ++= {
     "com.typesafe.akka"  %% "akka-http"                   % akkaHttpVersion,
     "com.typesafe.akka"  %% "akka-http-core"              % akkaHttpVersion,
     "com.typesafe.akka"  %% "akka-http-spray-json"        % akkaHttpVersion,
-//    "com.typesafe.akka"  %% "akka-http-testkit"           % akkaHttpVersion % Test,
     "ch.megard" %% "akka-http-cors" % "0.4.2",
 
     "com.typesafe.slick" %% "slick"                       % slickVersion,
@@ -30,13 +29,3 @@ libraryDependencies ++= {
 
   )
 }
-
-resolvers += "Typesafe" at "https://repo.typesafe.com/typesafe/releases/"
-
-Revolver.settings
-enablePlugins(JavaAppPackaging)
-enablePlugins(DockerPlugin)
-
-
-dockerExposedPorts := Seq(8080)
-dockerEntrypoint := Seq("bin/%s" format executableScriptName.value, "-Dconfig.resource=docker.conf")
