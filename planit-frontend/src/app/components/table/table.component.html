@@ -1,0 +1,19 @@
+<table *ngIf="users" class="table">
+  <thead>
+    <tr class="table-row">
+      <th>ID</th>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Birth date</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let user of users" class="table-row" (click)="selectUser(user.id)">
+    <td>{{user.id}}</td>
+    <td>{{user.name}}</td>
+    <td>{{user.surname}}</td>
+    <td>{{user.birth_date}}</td>
+    <td>{{user.address}}</td>
+  </tr>
+</table>
+<h1 *ngIf="!users">NO USERS YET! CREATE YOURS!!!!!!!!!!</h1>

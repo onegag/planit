@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  planit-postgres:
+    image: "postgres:12.2-alpine"
+    container_name: planit-postgres
+    volumes:
+      - planit-data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=users
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1111
+
+  planit-scala:
+    build: ./planit-scala
+    container_name: planit-scala
+    environment:
+      - DB_SERVER=planit-postgres
+      - POSTGRES_DB=users
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=1111
+    ports:
+      - 8080:8080
+    links:
+      - planit-postgres
+
+  planit-frontend:
+    build: ./planit-frontend
+    container_name: planit-frontend
+    ports:
+      - 4200:80
+    links:
+      - planit-scala
+
+
+volumes:
+  planit-data:

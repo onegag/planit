@@ -1,0 +1,37 @@
+<form class="form">
+  <fieldset>
+    <legend>User Form</legend>
+
+    <div *ngIf='selectedUser.id'>
+        <p *ngIf='selectedUser.id'>ID: {{selectedUser.id}}</p>
+        <button type='button' (click)='deselectUser()'>New user</button>
+    </div>
+    <p *ngIf='!selectedUser.id'>New user</p>
+    <br/>
+    <input type="text" 
+        (change)='changeField($event, "name")' 
+        placeholder="Name"
+        [value]='selectedUser.name'
+    /><br>
+    <input type="text" 
+        (change)='changeField($event, "surname")' 
+        placeholder="Surname"
+        [value]='selectedUser.surname'
+    /><br>
+    <input type="text" 
+        (change)='changeField($event, "birth_date")' 
+        placeholder="Birth date"
+        [value]='selectedUser.birth_date'
+    /><br>
+    <input type="text" 
+        (change)='changeField($event, "address")' 
+        placeholder="Address"
+        [value]='selectedUser.address'
+    /><br>
+
+    <div class='row'>
+        <button type="button" (click)='submitForm()'>Save</button>
+        <button *ngIf='selectedUser.id' type="button" (click)='deleteUser()'>Delete</button>
+    </div>
+  </fieldset>
+</form>
